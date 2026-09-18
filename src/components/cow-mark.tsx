@@ -1,6 +1,6 @@
 import { cn } from "@/lib/utils";
 
-export function CowMark({ className, title = "CowAgent" }: { className?: string; title?: string }) {
+export function CowMark({ className, title = "Bossnu.Silelo" }: { className?: string; title?: string }) {
   return (
     <svg
       viewBox="0 0 64 64"
