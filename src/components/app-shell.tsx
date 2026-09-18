@@ -7,6 +7,7 @@ import { Sheet } from "@/components/ui/sheet";
 import { MOBILE_TABS, NAV } from "@/lib/cow/nav";
 import { useCowStore } from "@/lib/cow/store";
 import { cn } from "@/lib/utils";
+import { UserButton } from "@/lib/auth/gates";
 
 function NavBody({ onNavigate }: { onNavigate?: () => void }) {
   const pathname = useRouterState({ select: (s) => s.location.pathname });
@@ -108,7 +109,7 @@ export function AppShell({ children, crumb }: { children: ReactNode; crumb?: str
             <span className="hidden text-subtle sm:inline"> / </span>
             <span className="text-fg">{title}</span>
           </p>
-          <div className="ml-auto flex items-center gap-1">
+          <div className="ml-auto flex items-center gap-2"><UserButton />
             {pathname === "/" ? (
               <>
                 <Button
