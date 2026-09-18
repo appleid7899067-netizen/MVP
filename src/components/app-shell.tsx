@@ -15,23 +15,14 @@ function NavBody({ onNavigate }: { onNavigate?: () => void }) {
     <nav className="flex min-h-0 flex-1 flex-col gap-5 overflow-y-auto px-2 py-3">
       {NAV.map((group) => (
         <div key={group.section}>
-          <p className="px-2 pb-1.5 text-[10px] font-medium tracking-[0.14em] text-subtle uppercase">
-            {group.section}
-          </p>
+          <p className="px-2 pb-1.5 text-[10px] font-medium tracking-[0.14em] text-subtle uppercase">{group.section}</p>
           <ul className="flex flex-col gap-0.5">
             {group.items.map((item) => {
               const active = item.to === "/" ? pathname === "/" : pathname.startsWith(item.to);
               const Icon = item.icon;
               return (
                 <li key={item.to}>
-                  <Link
-                    to={item.to}
-                    onClick={onNavigate}
-                    className={cn(
-                      "flex h-10 items-center gap-2.5 rounded-md px-2.5 text-sm transition-colors duration-150",
-                      active ? "bg-elevated text-fg" : "text-muted hover:bg-elevated/60 hover:text-fg",
-                    )}
-                  >
+                  <Link to={item.to} onClick={onNavigate} className={cn("flex h-10 items-center gap-2.5 rounded-md px-2.5 text-sm transition-colors duration-150", active ? "bg-elevated text-fg" : "text-muted hover:bg-elevated/60 hover:text-fg")}>
                     <Icon className={cn("size-4", active ? "text-primary" : "text-subtle")} />
                     {item.label}
                   </Link>
@@ -50,8 +41,8 @@ function Brand() {
     <Link to="/" className="flex items-center gap-2.5 px-3 py-3">
       <CowMark className="size-8 text-primary" />
       <span className="flex flex-col leading-tight">
-        <span className="text-sm font-medium tracking-tight">CowAgent</span>
-        <span className="text-[11px] text-subtle">Console</span>
+        <span className="text-sm font-medium tracking-tight">Bossnu.Silelo</span>
+        <span className="text-[11px] text-subtle">AI Agent Console</span>
       </span>
     </Link>
   );
@@ -71,11 +62,7 @@ export function AppShell({ children, crumb }: { children: ReactNode; crumb?: str
     return unsub;
   }, []);
 
-  const title =
-    crumb ??
-    NAV.flatMap((g) => g.items).find((i) => (i.to === "/" ? pathname === "/" : pathname.startsWith(i.to)))
-      ?.label ??
-    "Chat";
+  const title = crumb ?? NAV.flatMap((g) => g.items).find((i) => (i.to === "/" ? pathname === "/" : pathname.startsWith(i.to)))?.label ?? "Chat";
 
   return (
     <div className="flex h-dvh min-h-0 bg-bg text-fg">
@@ -84,7 +71,7 @@ export function AppShell({ children, crumb }: { children: ReactNode; crumb?: str
         <NavBody />
         <div className="flex items-center gap-2 border-t border-border px-3 py-3">
           <span className="size-1.5 rounded-full bg-primary" />
-          <span className="font-mono text-[11px] text-subtle">CowAgent demo</span>
+          <span className="font-mono text-[11px] text-subtle">Bossnu.Silelo</span>
         </div>
       </aside>
 
@@ -95,38 +82,22 @@ export function AppShell({ children, crumb }: { children: ReactNode; crumb?: str
 
       <div className="flex min-w-0 flex-1 flex-col">
         <header className="flex h-12 shrink-0 items-center gap-2 border-b border-border px-3 pr-16 md:px-4 md:pr-4">
-          <Button
-            variant="ghost"
-            size="icon-sm"
-            className="md:hidden"
-            aria-label="Open menu"
-            onClick={() => setNavOpen(true)}
-          >
+          <Button variant="ghost" size="icon-sm" className="md:hidden" aria-label="Open menu" onClick={() => setNavOpen(true)}>
             {navOpen ? <X /> : <Menu />}
           </Button>
           <p className="min-w-0 truncate text-sm text-muted">
-            <span className="hidden sm:inline">CowAgent</span>
+            <span className="hidden sm:inline">Bossnu.Silelo</span>
             <span className="hidden text-subtle sm:inline"> / </span>
             <span className="text-fg">{title}</span>
           </p>
-          <div className="ml-auto flex items-center gap-2"><UserButton />
+          <div className="ml-auto flex items-center gap-2">
+            <UserButton />
             {pathname === "/" ? (
               <>
-                <Button
-                  variant="secondary"
-                  size="icon-sm"
-                  className="sm:hidden"
-                  aria-label="New Chat"
-                  onClick={() => newSession()}
-                >
+                <Button variant="secondary" size="icon-sm" className="sm:hidden" aria-label="New Chat" onClick={() => newSession()}>
                   <Plus className="size-3.5" />
                 </Button>
-                <Button
-                  variant="secondary"
-                  size="sm"
-                  className="hidden sm:inline-flex"
-                  onClick={() => newSession()}
-                >
+                <Button variant="secondary" size="sm" className="hidden sm:inline-flex" onClick={() => newSession()}>
                   <Plus className="size-3.5" />
                   New Chat
                 </Button>
@@ -142,14 +113,7 @@ export function AppShell({ children, crumb }: { children: ReactNode; crumb?: str
             const active = tab.to === "/" ? pathname === "/" : pathname.startsWith(tab.to);
             const Icon = tab.icon;
             return (
-              <Link
-                key={tab.to}
-                to={tab.to}
-                className={cn(
-                  "flex flex-1 flex-col items-center justify-center gap-0.5 text-[10px]",
-                  active ? "text-primary" : "text-muted",
-                )}
-              >
+              <Link key={tab.to} to={tab.to} className={cn("flex flex-1 flex-col items-center justify-center gap-0.5 text-[10px]", active ? "text-primary" : "text-muted")}>
                 <Icon className="size-5" />
                 {tab.label}
               </Link>
