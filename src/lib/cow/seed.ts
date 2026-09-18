@@ -433,7 +433,7 @@ export const CHANNELS: Channel[] = [
 ];
 
 export const MODELS: ModelOption[] = [
-  { id: "grok-4.5", provider: "xAI", name: "grok-4.5", live: true, modalities: ["Chat", "Tools", "Vision"] },
+  { id: "puter-default", provider: "Puter", name: "Puter default", live: true, modalities: ["Chat"] },
   { id: "claude-opus", provider: "Anthropic", name: "claude-opus", live: false, modalities: ["Chat", "Vision"] },
   { id: "gpt-4.1", provider: "OpenAI", name: "gpt-4.1", live: false, modalities: ["Chat", "Vision", "Image"] },
   { id: "gemini-flash", provider: "Google", name: "gemini-flash", live: false, modalities: ["Chat", "Vision"] },
