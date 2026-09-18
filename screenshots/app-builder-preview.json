@@ -1,0 +1,36 @@
+{
+  "url": "http://127.0.0.1:8080/",
+  "viewports": {
+    "desktop": {
+      "width": 1280,
+      "height": 800,
+      "status": 200,
+      "title": "CowAgent",
+      "hasCanvas": false,
+      "bodyTextLen": 1308,
+      "bodyTextHash": "f6c956ac3fa6bb35ac5dd2a7209a0305b473497a6f0bcd5ef718153af49fa179",
+      "bodyTextPrefix": "CowAgent Console CHAT Chat MANAGEMENT Agents Models Skills Memor",
+      "horizontalOverflow": false,
+      "consoleErrors": [],
+      "pageErrors": [],
+      "screenshot": "/workspace/screenshots/app-builder-preview.png"
+    },
+    "mobile": {
+      "width": 390,
+      "height": 844,
+      "status": 200,
+      "title": "CowAgent",
+      "hasCanvas": false,
+      "bodyTextLen": 1149,
+      "bodyTextHash": "5628ab0d7743f1b9638040d35a980e28629d63fedf3d4accfb71e3ca76bd4281",
+      "bodyTextPrefix": "Chat History Cow · Team Lead Compare ReAct, Function Calling, MC",
+      "horizontalOverflow": false,
+      "consoleErrors": [],
+      "pageErrors": [],
+      "screenshot": "/workspace/screenshots/app-builder-preview-mobile.png"
+    }
+  },
+  "brandWarnings": [],
+  "authWarnings": [],
+  "verdictFile": "/workspace/screenshots/app-builder-preview.json"
+}
