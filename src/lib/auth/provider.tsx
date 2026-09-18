@@ -1,15 +1,15 @@
-import type { ReactNode } from "react";
+import { useEffect, type ReactNode } from "react";
 
-/**
- * App-wide client provider mounted once near the root (in `src/routes/__root.tsx`):
- *
- *   <AuthProvider><Outlet /></AuthProvider>
- *
- * Better Auth's React client (`@/lib/auth/client`) needs NO context provider —
- * its `useSession()` works standalone — so this is a passthrough today. It's
- * kept as the single, stable mount point for any future client-side providers
- * (e.g. a toast or theme provider) without churning the root shell.
- */
 export function AuthProvider({ children }: { children: ReactNode }) {
+  useEffect(() => {
+    if (window.puter) return;
+    const existing = document.querySelector('script[data-puter-sdk="true"]');
+    if (existing) return;
+    const script = document.createElement("script");
+    script.src = "https://js.puter.com/v2/";
+    script.async = true;
+    script.dataset.puterSdk = "true";
+    document.head.appendChild(script);
+  }, []);
   return <>{children}</>;
 }
