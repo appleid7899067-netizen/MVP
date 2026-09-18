@@ -372,7 +372,7 @@ export function ChatView() {
               </ul>
             ) : null}
           </div>
-          <span className="ml-auto hidden font-mono text-2xs text-subtle sm:inline">grok-4.5 live</span>
+          <span className="ml-auto hidden font-mono text-2xs text-subtle sm:inline">Puter AI live</span>
         </div>
 
         <div ref={scroller} className="min-h-0 flex-1 overflow-y-auto px-3 py-4 sm:px-6">
