@@ -3,10 +3,14 @@ import { PageHeader } from "@/components/page-header";
 import { Button } from "@/components/ui/button";
 import { MODELS_STATIC, useCowStore } from "@/lib/cow/store";
 import { cn } from "@/lib/utils";
+import { useEffect, useState } from "react";
+import { listPuterModels } from "@/lib/auth/client";
 
 export const Route = createFileRoute("/models")({ component: ModelsPage });
 
 function ModelsPage() {
+  const [models, setModels] = useState(MODELS_STATIC);
+  useEffect(() => { let alive = true; void listPuterModels().then((items) => { if (!alive || !Array.isArray(items)) return; setModels(items.map((m) => ({ id: m.id, provider: m.provider ?? "Puter", name: m.name ?? m.id, live: true, modalities: ["Chat"] }))); }).catch(() => {}); return () => { alive = false; }; }, []);
   const selected = useCowStore((s) => s.selectedModelId);
   const setModel = useCowStore((s) => s.setModel);
 
@@ -14,10 +18,10 @@ function ModelsPage() {
     <div className="h-full overflow-y-auto">
       <PageHeader
         title="Models"
-        description="This demo’s live path is xAI grok-4.5. Other providers are listed as they appear in the CowAgent catalog."
+        description="Puter provides the live AI gateway. Available models are loaded from Puter when connected."
       />
       <div className="grid gap-3 px-4 pb-8 sm:grid-cols-2 sm:px-6">
-        {MODELS_STATIC.map((m) => (
+        {models.map((m) => (
           <article
             key={m.id}
             className={cn(
